@@ -1,0 +1,44 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.app {
+  padding: 30px;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.textContainer:hover {
+  cursor: pointer;
+}
+
+.heading {
+  padding: 0;
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.codingChallenge {
+  padding: 0;
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: 25px;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin: 0;
+}
