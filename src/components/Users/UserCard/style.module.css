@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  width: 300px;
+  margin: 20px;
+  border: solid grey 0.5px;
+  border-radius: 15px;
+}
+
+.container:hover {
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.textContainer {
+  display: grid;
+  gap: 10px;
+}
+
+.image {
+  width: 100px;
+  border-radius: 50%;
+}
+
+.id {
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+.userName {
+  margin: 0;
+  padding: 0;
+  color: grey;
+}

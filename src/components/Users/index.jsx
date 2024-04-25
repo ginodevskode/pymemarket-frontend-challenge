@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUsers } from "src/redux/usersSlice";
+import { UserCard } from "./UserCard";
+import styles from "./style.module.css";
 
 const Users = () => {
   const dispatch = useDispatch();
@@ -11,9 +13,19 @@ const Users = () => {
 
   return (
     <div>
-      {users?.map((user) => {
-        return <div key={user.id}>{user.login}</div>;
-      })}
+      <h1 className={styles.title}>Github Users</h1>
+      <div className={styles.container}>
+        {users?.map((user) => {
+          return (
+            <UserCard
+              username={user.login}
+              avatar={user.avatar_url}
+              id={user.id}
+              key={user.login}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };
