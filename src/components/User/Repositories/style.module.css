@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+}
+
+.reposSection {
+  width: 70%;
+  margin-left: 50px;
+}
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+}
+.title {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.icon {
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.reposContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 50px;
+  margin-top: 30px;
+}

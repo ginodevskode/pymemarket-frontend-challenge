@@ -4,6 +4,7 @@ const initialState = {
   list: [],
   currentUser: [],
   currentUserRepositories: [],
+  currentRepositoryContent: [],
   isPending: false,
   error: false,
 };
@@ -57,6 +58,56 @@ export const getUserRepositories = createAsyncThunk(
   }
 );
 
+export const getRepository = createAsyncThunk(
+  "users/getRepository",
+  async ({ user, repository }) => {
+    const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
+    const token = import.meta.env.VITE_TOKEN;
+
+    const response = await fetch(
+      `${apiUrl}/repos/${user}/${repository}/contents`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await response.json();
+    const totalData = {
+      data,
+    };
+
+    if (data.error) {
+      throw new Error(data.message);
+    }
+    return totalData;
+  }
+);
+
+export const getRepositoryContent = createAsyncThunk(
+  "users/getRepositoryContent",
+  async (path) => {
+    const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
+    const token = import.meta.env.VITE_TOKEN;
+
+    const response = await fetch(`${apiUrl}/repos${path}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    const totalData = {
+      data,
+    };
+    if (data.error) {
+      throw new Error(data.message);
+    }
+    return totalData;
+  }
+);
+
 const usersSlice = createSlice({
   name: "users",
   initialState,
@@ -96,6 +147,30 @@ const usersSlice = createSlice({
         state.currentUserRepositories = action.payload;
       })
       .addCase(getUserRepositories.rejected, (state, action) => {
+        state.isPending = false;
+        state.error = action.error.message;
+      })
+      .addCase(getRepository.pending, (state) => {
+        state.isPending = true;
+      })
+      .addCase(getRepository.fulfilled, (state, action) => {
+        state.isPending = false;
+        state.error = false;
+        state.currentRepositoryContent = action.payload.data;
+      })
+      .addCase(getRepository.rejected, (state, action) => {
+        state.isPending = false;
+        state.error = action.error.message;
+      })
+      .addCase(getRepositoryContent.pending, (state) => {
+        state.isPending = true;
+      })
+      .addCase(getRepositoryContent.fulfilled, (state, action) => {
+        state.isPending = false;
+        state.error = false;
+        state.currentRepositoryContent = action.payload.data;
+      })
+      .addCase(getRepositoryContent.rejected, (state, action) => {
         state.isPending = false;
         state.error = action.error.message;
       });

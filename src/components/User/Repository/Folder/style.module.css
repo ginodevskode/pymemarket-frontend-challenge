@@ -1,0 +1,25 @@
+.icon {
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.reposContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 50px;
+  margin-top: 30px;
+}
+
+.itemContainer {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  padding-left: 10px;
+}
+
+.itemContainer:hover {
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}

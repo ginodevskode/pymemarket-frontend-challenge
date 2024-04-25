@@ -1,0 +1,8 @@
+.reposContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 50px;
+  margin-top: 30px;
+}

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { getUserRepositories } from "src/redux/usersSlice";
-import styles from "./repositories.module.css";
+import styles from "./style.module.css";
 import { RepositoryCard } from "./RepositoryCard";
 
 const Repositories = () => {
@@ -32,6 +32,7 @@ const Repositories = () => {
         {currentUserRepos.map((repositoryItem) => {
           return (
             <RepositoryCard
+              userName={userName}
               repositoryName={repositoryItem.name}
               repositoryDescription={repositoryItem.description}
               key={repositoryItem.name}
