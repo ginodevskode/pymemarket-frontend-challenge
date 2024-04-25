@@ -1,16 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-// Necessary Import
 import { BrowserRouter as Router } from "react-router-dom";
-//we import the index file with all routes
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 import RoutesConfig from "./routes";
 import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Router>
-      <RoutesConfig />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <RoutesConfig />
+      </Router>
+    </Provider>
   </React.StrictMode>
 );
