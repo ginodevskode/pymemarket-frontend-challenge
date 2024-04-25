@@ -33,7 +33,7 @@ const usersSlice = createSlice({
       .addCase(getUsers.fulfilled, (state, action) => {
         state.isPending = false;
         state.error = false;
-        state.list = action.payload.data;
+        state.list = action.payload;
       })
       .addCase(getUsers.rejected, (state, action) => {
         state.isPending = false;
